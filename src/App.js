@@ -1,19 +1,28 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-import Intro from './pages/FSDIntro';
+import FSDIntro from './pages/FSDIntro';
 import PageNotFound from './pages/PageNotFound';
 
 function App() {
   const location = useLocation();
+  const GenerateMainClass = () => {
+    const pathname = location.pathname;
+    let ClassName = "";
+    if (pathname === "/") ClassName = "fsd-intro-page";
+    else ClassName = "page-not-found-page";
+    return ClassName;
+  }
   return (
     <>
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Intro />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+      <main className={`page ${GenerateMainClass()}`}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<FSDIntro />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </main>
     </>
   );
 }

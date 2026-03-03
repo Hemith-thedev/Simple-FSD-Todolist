@@ -1,6 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --hue-value: 200;
+  --primary-95: hsl(var(--hue-value), 100%, 95%);
+  --primary-90: hsl(var(--hue-value), 100%, 90%);
+  --primary-80: hsl(var(--hue-value), 100%, 80%);
+  --primary-70: hsl(var(--hue-value), 100%, 70%);
+  --primary-60: hsl(var(--hue-value), 100%, 60%);
+  --primary-50: hsl(var(--hue-value), 100%, 50%);
+  --primary-40: hsl(var(--hue-value), 100%, 40%);
+  --primary-30: hsl(var(--hue-value), 100%, 30%);
+  --primary-20: hsl(var(--hue-value), 100%, 20%);
+  --primary-10: hsl(var(--hue-value), 100%, 10%);
+
+  --gradient-primary-t-b: linear-gradient(to bottom, var(--primary-50), var(--primary-20));
+  --gradient-primary-b-t: linear-gradient(to top, var(--primary-50), var(--primary-20));
+  --gradient-primary-r-l: linear-gradient(to right, var(--primary-50), var(--primary-20));
+  --gradient-primary-l-r: linear-gradient(to left, var(--primary-50), var(--primary-20));
+
+  --gradient-secondary-t-b: linear-gradient(to bottom, var(--primary-50), var(--primary-90));
+  --gradient-secondary-b-t: linear-gradient(to top, var(--primary-50), var(--primary-90));
+  --gradient-secondary-r-l: linear-gradient(to right, var(--primary-50), var(--primary-90));
+  --gradient-secondary-l-r: linear-gradient(to left, var(--primary-50), var(--primary-90));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  font-family: "Poppins";
+}
+
+::selection {
+  background-color: var(--primary-80);
+  /* color: #fff; */
+}
+
+::-webkit-scrollbar {
+  height: 14px;
+  width: 14px;
+  background-color: hsl(var(--hue-value), 100%, 95%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary-t-b);
+  border-radius: 10px;
+  border: 3px solid hsl(var(--hue-value), 100%, 95%);
+}
+
+::-webkit-scrollbar-track {
+  margin: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -14,4 +69,127 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+b,
+i {
+  /* defaults */
+  position: relative;
+  margin: 0;
+  color: #444;
+  font-size: 1.2rem;
+
+  /* sizes */
+  &.heading-high,
+  &.heading-high * {
+    font-size: 3rem;
+  }
+
+  &.heading-mid,
+  &.heading-mid * {
+    font-size: 2.5rem;
+  }
+
+  &.heading-low,
+  &.heading-low * {
+    font-size: 2rem;
+  }
+
+  &.body-high,
+  &.body-high * {
+    font-size: 1.75rem;
+  }
+
+  &.body-mid,
+  &.body-mid * {
+    font-size: 1.5rem;
+  }
+
+  /* boldness */
+  &.bold {
+    font-weight: 600;
+  }
+
+  /* colors */
+  &.light {
+    color: var(--primary-95);
+  }
+
+  &.dark {
+    color: var(--primary-10);
+  }
+
+  &.highlight {
+    color: var(--primary-50);
+
+    &::selection {
+      color: var(--primary-30);
+    }
+  }
+
+  /* gradients */
+  &.gradient-bg {
+
+    &.clip-text {
+      color: transparent;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      user-select: none;
+    }
+
+    &.bg-p-t-b {
+      background: var(--gradient-primary-t-b);
+    }
+
+    &.bg-p-b-t {
+      background: var(--gradient-primary-b-t);
+    }
+
+    &.bg-p-r-l {
+      background: var(--gradient-primary-r-l);
+    }
+
+    &.bg-p-l-r {
+      background: var(--gradient-primary-l-r);
+    }
+
+    &.bg-s-t-b {
+      background: var(--gradient-secondary-t-b);
+    }
+
+    &.bg-s-b-t {
+      background: var(--gradient-secondary-b-t);
+    }
+
+    &.bg-s-r-l {
+      background: var(--gradient-secondary-r-l);
+    }
+
+    &.bg-s-l-r {
+      background: var(--gradient-secondary-l-r);
+    }
+  }
+
+  /* extras */
+  &.uppercase {
+    text-transform: uppercase;
+  }
+  &.bullet {
+    &::before {
+      content: "- ";
+    }
+  }
 }
