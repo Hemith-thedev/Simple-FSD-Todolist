@@ -6,6 +6,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import FSDIntro from './pages/FSDIntro';
 import PageNotFound from './pages/PageNotFound';
 
+import { SpeedInsights } from '@vercel/speed-insights/react';
+
 function App() {
   const location = useLocation();
   const GenerateMainClass = () => {
@@ -22,6 +24,7 @@ function App() {
           <Route path="/" element={<FSDIntro />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <SpeedInsights />
       </main>
     </>
   );
