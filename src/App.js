@@ -7,6 +7,7 @@ import FSDIntro from './pages/FSDIntro';
 import PageNotFound from './pages/PageNotFound';
 
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <SpeedInsights />
+        <Analytics />
       </main>
     </>
   );
