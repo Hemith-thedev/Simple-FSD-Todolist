@@ -12,6 +12,7 @@ import ToolsRequiredNodeJS from './pages/ToolsRequiredNodeJS';
 import ToolsRequiredXampp from './pages/ToolsRequiredXampp';
 import ProjectSetup from './pages/ProjectSetup';
 import UnderstandingFiles from './pages/UnderstandingFiles';
+import UnderstandingFolders from './pages/UnderstandingFolders';
 import PageNotFound from './pages/PageNotFound';
 
 import NavigationBar from './components/NavigationBar';
@@ -55,6 +56,7 @@ function App() {
           <Route path="/tools-required/node-js" element={<ToolsRequiredNodeJS />} />
           <Route path="/tools-required/xampp-control-panel" element={<ToolsRequiredXampp />} />
           <Route path="/understanding-files" element={<UnderstandingFiles />} />
+          <Route path="/understanding-folders" element={<UnderstandingFolders />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <SpeedInsights />

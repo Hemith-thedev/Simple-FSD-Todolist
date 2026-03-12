@@ -11,7 +11,6 @@
 .navigation-bar {
   height: 100vh;
   width: 0%;
-  padding: 1rem 0;
   background: var(--gradient-primary-t-b);
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -20,7 +19,6 @@
 
   &.open {
     width: 20%;
-    padding: 1rem 1rem;
   }
 
   &.is-mobile {
@@ -42,12 +40,10 @@
     pointer-events: none;
   }
 
-  & * {
-    text-wrap: nowrap;
-  }
-
   & .wrapper {
     height: 100%;
+    width: fit-content;
+    padding: 1rem;
 
     & .logo {
       display: flex;
@@ -74,6 +70,7 @@
       padding-bottom: 1rem;
 
       & li {
+        height: fit-content;
         width: 100%;
 
         & .navigation-link-dropdown {
@@ -81,6 +78,8 @@
           flex-direction: column;
           justify-content: start;
           align-items: start;
+          height: fit-content;
+          width: 100%;
 
           & .toggle {
             display: flex;
@@ -116,18 +115,40 @@
               margin-bottom: 0;
             }
           }
+
+          & > ul {
+            position: relative;
+            
+            &::before {
+              position: absolute;
+              left: 0;
+              top: -1.5rem;
+              content: "";
+              display: flex;
+              height: calc(100% + 0.2rem);
+              width: .2rem;
+              border-radius: 0.5rem;
+              background-color: var(--primary-50);
+            }
+
+            & .navigation-link {
+              text-align: left;
+            }
+          }
         }
 
         & .navigation-link {
           display: flex;
+          gap: 0.25rem;
           height: fit-content;
           width: 100%;
           border: none;
           outline: none;
-          padding: 0.5rem;
+          padding: 0.5rem 0.75rem;
           border-radius: 0.5rem;
           background-color: transparent;
           cursor: pointer;
+          text-wrap: wrap;
 
           &.active {
             background-color: var(--primary-10);

@@ -46,8 +46,8 @@ export default function UnderstandingFiles() {
                 contents={[
                   <UL
                     contents={[
-                      <p className="bullet">Full dependency tree including sub-packages</p>,
-                      <p className="bullet">Records exactly where each package was downloaded from</p>,
+                      <p className="bullet">Full dependency tree including <span className="code">sub-packages</span></p>,
+                      <p className="bullet">Records exactly where each <span className="code">package</span> was downloaded from</p>,
                       <p className="bullet">Lists the precise version actually installed for each <span className="code">dependency</span></p>
                     ]}
                     hasStep
@@ -159,6 +159,36 @@ export default function UnderstandingFiles() {
                       <p className="bullet">Pages styling</p>,
                       <p className="bullet">Stying for specific element</p>,
                       <p className="bullet">Mainly used for <span className="code">&lt;App /&gt;</span></p>
+                    ]}
+                    hasStep
+                    hasMarginBottom
+                  />
+                ]}
+                hasStep
+              />,
+              <UL
+                head={
+                  <p className="heading-low bold dark">.gitignore</p>
+                }
+                contents={[
+                  <UL
+                    contents={[
+                      <p>To list the files need to be ignored while pushing the files to repository</p>
+                    ]}
+                    hasStep
+                    hasMarginBottom
+                  />
+                ]}
+                hasStep
+              />,
+              <UL
+                head={
+                  <p className="heading-low bold dark">README.md</p>
+                }
+                contents={[
+                  <UL
+                    contents={[
+                      <p>Holds complete information, steps and instructions to use the project</p>
                     ]}
                     hasStep
                     hasMarginBottom
