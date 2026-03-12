@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --hue-value: 200;
+  --hue-value: 280;
   --primary-95: hsl(var(--hue-value), 100%, 95%);
   --primary-90: hsl(var(--hue-value), 100%, 90%);
   --primary-80: hsl(var(--hue-value), 100%, 80%);
@@ -64,11 +64,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-95);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  max-height: 100svh;
+  width: 100%;
 }
 
 ul {
@@ -85,36 +89,41 @@ p,
 span,
 b,
 i {
-  /* defaults */
   position: relative;
   margin: 0;
   color: #444;
-  font-size: 1.2rem;
 
-  /* sizes */
+  &:has(& span.code) {
+    padding-bottom: 0.25rem;
+  }
+
+  /* Fluid Base: Min 1rem, Scales with screen, Max 1.2rem */
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.2rem);
+
+  /* sizes - Responsive scaling using clamp(min, fluid, max) */
   &.heading-high,
   &.heading-high * {
-    font-size: 3rem;
+    font-size: clamp(2rem, 1.2rem + 4vw, 3.5rem);
   }
 
   &.heading-mid,
   &.heading-mid * {
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 1.1rem + 3vw, 2.8rem);
   }
 
   &.heading-low,
   &.heading-low * {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 1rem + 2vw, 2.2rem);
   }
 
   &.body-high,
   &.body-high * {
-    font-size: 1.75rem;
+    font-size: clamp(1.2rem, 1rem + 0.8vw, 1.75rem);
   }
 
   &.body-mid,
   &.body-mid * {
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.5rem);
   }
 
   /* boldness */
@@ -137,6 +146,18 @@ i {
     &::selection {
       color: var(--primary-30);
     }
+  }
+
+  &.yellow {
+    color: hsl(50, 100%, 50%) !important;
+  }
+
+  &.green {
+    color: hsl(130, 100%, 30%) !important;
+  }
+
+  &.blue {
+    color: hsl(200, 100%, 50%) !important;
   }
 
   /* gradients */
@@ -183,10 +204,24 @@ i {
     }
   }
 
+  /* code */
+  &.code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+      background-color: var(--primary-90);
+      padding: 0.25rem;
+      border-radius: 0.5rem;
+  }
+
+  &:has(span.code) {
+    margin-bottom: 0.25rem;
+  }
+
   /* extras */
   &.uppercase {
     text-transform: uppercase;
   }
+
   &.bullet {
     &::before {
       content: "- ";

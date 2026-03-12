@@ -23,7 +23,7 @@ export default function Table({ heads = [], rows = [], hasStep = false, hasMargi
           <tbody>
             {rows.map((r, i) => (<tr key={i}>
               {r.map((c, j) => (<td key={j}>
-                <p className="body">{c}</p>
+                <p>{c}</p>
               </td>))}
             </tr>))}
           </tbody>
