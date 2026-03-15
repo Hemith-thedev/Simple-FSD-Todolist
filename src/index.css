@@ -24,7 +24,9 @@
   --gradient-secondary-l-r: linear-gradient(to left, var(--primary-50), var(--primary-90));
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -92,6 +94,7 @@ i {
   position: relative;
   margin: 0;
   color: #444;
+  transition: all 0s;
 
   &:has(& span.code) {
     padding-bottom: 0.25rem;
@@ -148,16 +151,75 @@ i {
     }
   }
 
+  &.glow {
+    --glow-color: white;
+    text-shadow: 0 0 0.5rem var(--glow-color);
+  }
+
   &.yellow {
     color: hsl(50, 100%, 50%) !important;
+  }
+
+  &.lightyellow {
+    color: hsl(50, 100%, 80%) !important;
   }
 
   &.green {
     color: hsl(130, 100%, 30%) !important;
   }
 
+  &.comment {
+    color: hsl(130, 50%, 50%) !important;
+  }
+
   &.blue {
     color: hsl(200, 100%, 50%) !important;
+  }
+
+  &.pink {
+    color: hsl(300, 100%, 70%) !important;
+  }
+
+  &.purple {
+    color: hsl(280, 40%, 50%) !important;
+  }
+
+  &.gold {
+    color: hsl(45, 100%, 85%) !important;
+    --glow-color: hsl(45, 100%, 50%);
+  }
+  
+  &.crimson {
+    color: hsl(330, 100%, 50%) !important;
+    --glow-color: hsl(330, 100%, 50%);
+  }
+
+  &.cyan {
+    color: hsl(184, 100%, 85%) !important;
+    --glow-color: hsl(184, 100%, 41%);
+  }
+
+  &.midblue {
+    color: hsl(220, 100%, 61%) !important;
+    --glow-color: hsl(220, 100%, 85%);
+  }
+
+  &.lightblue {
+    color: hsl(200, 100%, 71%) !important;
+    --glow-color: hsl(200, 100%, 50%);
+  }
+
+  &.lightgreen {
+    color: hsl(130, 100%, 81%) !important;
+    --glow-color: hsl(130, 100%, 50%);
+  }
+
+  &.orange {
+    color: hsl(24, 50%, 50%) !important;
+  }
+
+  &.gray {
+    color: hsl(0, 0%, 50%) !important;
   }
 
   /* gradients */
@@ -208,9 +270,9 @@ i {
   &.code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
-      background-color: var(--primary-90);
-      padding: 0.25rem;
-      border-radius: 0.5rem;
+    background-color: var(--primary-90);
+    padding: 0.25rem;
+    border-radius: 0.5rem;
   }
 
   &:has(span.code) {

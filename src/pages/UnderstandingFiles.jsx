@@ -1,11 +1,5 @@
 import UL from "../components/UL";
-import WelcomePopup from "../components/WelcomePopup";
-import { useState } from "react";
 import Wrapper from "../components/Wrapper";
-import Table from "../components/Table";
-import SubjectPoint from "../components/SubjectPoint";
-import CodeDisplay from "../components/CodeDisplay";
-import { FileText, Terminal, TerminalSquare, TextSelect } from "lucide-react";
 
 export default function UnderstandingFiles() {
   return (

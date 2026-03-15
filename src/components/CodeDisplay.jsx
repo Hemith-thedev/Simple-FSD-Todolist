@@ -2,11 +2,11 @@ import Wrapper from "./Wrapper";
 import { Copy, CopyCheck, ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
 
-export default function CodeDisplay({ label = "", Code = <></>, hasMarginBottom, icon, moveIcon }) {
+export default function CodeDisplay({ label = "", Code = <></>, hasHead = true, hasMarginBottom, icon, moveIcon }) {
   const [isOpen, setIsOpen] = useState(true);
   const [copied, setCopied] = useState(false);
   const CoderRef = useRef(null);
-  
+
   const copyText = () => {
     const code = CoderRef.current.innerText.replace(/\n/g, '\r\n');
     navigator.clipboard.writeText(code)
@@ -20,7 +20,7 @@ export default function CodeDisplay({ label = "", Code = <></>, hasMarginBottom,
   return (
     <div className={`code-display ${hasMarginBottom ? "margin-bottom" : ""}`}>
       <Wrapper className={"code-display-wrapper"}>
-        <div className="code-display-header">
+        {hasHead && <div className="code-display-header">
           <div className="label">
             {icon ? icon : <></>} <p className="bold"> {label}</p>
           </div>
@@ -30,9 +30,9 @@ export default function CodeDisplay({ label = "", Code = <></>, hasMarginBottom,
             </button>
             <button onClick={toggle} className={`toggle-icon ${isOpen ? "is-open" : ""}`}>
               <ChevronDown rotate={(isOpen) ? 180 : 0} />
-            </button> 
+            </button>
           </div>
-        </div>
+        </div>}
         {isOpen && <pre>
           <code ref={CoderRef}>
             {Code}

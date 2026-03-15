@@ -3,8 +3,8 @@ const LI = ({ content }) => {
   return <li>{content}</li>
 }
 
-export default function UL({ head, contents = [], hasStep = false, hasMarginBottom = false }) {
-  return <ul className={`${hasStep ? "step" : ""} ${hasMarginBottom ? "margin-bottom" : ""}`}>
+export default function UL({ head, contents = [], hasStep = false, hasMarginBottom = false, className }) {
+  return <ul className={`${className ? className : ""} ${hasStep ? "step" : ""} ${hasMarginBottom ? "margin-bottom" : ""}`}>
     {head && <li>
       {head}
     </li>}
