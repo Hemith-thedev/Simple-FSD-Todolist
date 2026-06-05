@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --hue-value: 280;
   --primary-95: hsl(var(--hue-value), 100%, 95%);
   --primary-90: hsl(var(--hue-value), 100%, 90%);
   --primary-80: hsl(var(--hue-value), 100%, 80%);
@@ -129,6 +128,12 @@ i {
     font-size: clamp(1.1rem, 1rem + 0.5vw, 1.5rem);
   }
 
+  &.nav-link,
+  &.nav-link * {
+    font-size: clamp(0.75rem, 1rem + 0.25vw, 0.9rem);
+    line-height: 2rem;
+  }
+
   /* boldness */
   &.bold {
     font-weight: 600;
@@ -188,7 +193,7 @@ i {
     color: hsl(45, 100%, 85%) !important;
     --glow-color: hsl(45, 100%, 50%);
   }
-  
+
   &.crimson {
     color: hsl(330, 100%, 50%) !important;
     --glow-color: hsl(330, 100%, 50%);

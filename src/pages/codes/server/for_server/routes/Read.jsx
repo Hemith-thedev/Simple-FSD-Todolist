@@ -9,7 +9,7 @@ export default function ServerCodeRead() {
     <>
       <section className="section hero-section">
         <Wrapper>
-          <p className="heading-high light">Server Code</p>
+          <p className="heading-high light">server.js</p>
         </Wrapper>
       </section>
 
@@ -101,6 +101,7 @@ export default function ServerCodeRead() {
                 label="JavaScript JSX"
                 Code={
                   <>
+                  <span><br /></span>
                     <span className="comment">// Get todos (R - Read)<br /></span>
                     <span><span className="blue">server</span>.<span className="lightyellow">get</span><span className="yellow">(</span><span className="orange">"/api/read/todos"</span>, <span className="midblue">async</span> <span className="purple">(</span><span className="lightblue">req</span>, <span className="lightblue">res</span><span className="purple">)</span> <span className="midblue">=&gt;</span> <span className="purple">{"{"}</span><br /></span>
                     <span>  <span className="pink">try</span> <span className="blue">{"{"}</span><br /></span>
@@ -108,12 +109,12 @@ export default function ServerCodeRead() {
                     <span>      <span className="orange">"SELECT * FROM todos"</span><br /></span>
                     <span>    <span className="yellow">)</span>;<br /></span>
                     <span>    <span className="pink">if</span> <span className="yellow">(</span><span className="blue">todos</span>.<span className="lightblue">length</span> &gt; <span className="lightgreen">0</span><span className="yellow">)</span> <span className="yellow">{"{"}</span><br /></span>
-                    <span>      <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="yellow">(</span><span className="lightgreen">200</span><span className="yellow">)</span>.<span className="lightyellow">json</span><span className="yellow">(</span><span className="blue">todos</span><span className="yellow">)</span>;<br /></span>
+                    <span>      <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="purple">(</span><span className="lightgreen">200</span><span className="purple">)</span>.<span className="lightyellow">json</span><span className="purple">(</span><span className="blue">todos</span><span className="purple">)</span>;<br /></span>
                     <span>    <span className="yellow">{"}"}</span> <span className="pink">else</span> <span className="yellow">{"{"}</span><br /></span>
-                    <span>      <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="yellow">(</span><span className="lightgreen">200</span><span className="yellow">)</span>.<span className="lightyellow">json</span><span className="yellow">(</span><span className="purple">{"{"}</span> <span className="lightblue">message:</span> <span className="orange">"No todos found! 😂"</span> <span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
+                    <span>      <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="purple">(</span><span className="lightgreen">200</span><span className="purple">)</span>.<span className="lightyellow">json</span><span className="purple">(</span><span className="blue">{"[]"}</span><span className="purple">)</span>;<br /></span>
                     <span>    <span className="yellow">{"}"}</span><br /></span>
                     <span>  <span className="blue">{"}"}</span> <span className="pink">catch</span> <span className="blue">(</span><span className="lightblue">error</span><span className="blue">)</span> <span className="blue">{"{"}</span><br /></span>
-                    <span>    <span className="lightblue">console</span>.<span className="lightyellow">log</span><span className="yellow">(</span><span className="orange">"Failed to read todos:\n"</span> + <span className="lightblue">error</span><span className="yellow">)</span>;<br /></span>
+                    <span>    <span className="lightblue">console</span>.<span className="lightyellow">log</span><span className="yellow">(</span><span className="orange">"Failed to read todos:<span className="lightyellow">\n</span>"</span> + <span className="lightblue">error</span><span className="yellow">)</span>;<br /></span>
                     <span>    <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="yellow">(</span><span className="lightgreen">500</span><span className="yellow">)</span>.<span className="lightyellow">json</span><span className="yellow">(</span><span className="purple">{"{"}</span> <span className="lightblue">message:</span> <span className="orange">"Server error 💀"</span> <span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
                     <span>  <span className="blue">{"}"}</span><br /></span>
                     <span><span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
@@ -121,6 +122,8 @@ export default function ServerCodeRead() {
                 }
                 icon={<CurlyBraces />}
                 hasMarginBottom={true}
+                startAt={33}
+                endAt={50}
               />,
             ]}
           />

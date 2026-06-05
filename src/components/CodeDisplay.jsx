@@ -1,11 +1,31 @@
 import Wrapper from "./Wrapper";
 import { Copy, CopyCheck, ChevronDown } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export default function CodeDisplay({ label = "", Code = <></>, hasHead = true, hasMarginBottom, icon, moveIcon }) {
+export default function CodeDisplay({ label = "", Code = <></>, hasHead = true, hasMarginBottom, icon, moveIcon, startAt, endAt }) {
   const [isOpen, setIsOpen] = useState(true);
   const [copied, setCopied] = useState(false);
   const CoderRef = useRef(null);
+  const [lines, setLines] = useState([]);
+
+  const createLines = () => {
+    if (typeof startAt === "number" && typeof endAt === "number") {
+      // Create an array of line numbers from startAt to endAt
+      const lineNumbers = [];
+      for (let i = startAt; i <= endAt; i++) {
+        lineNumbers.push(i);
+      }
+      if (lineNumbers.length > 0) {
+        setLines(lineNumbers);
+      } else {
+        setLines([]); // Clear lines if no valid line numbers
+      }
+    }
+  }
+
+  useEffect(() => {
+    createLines();
+  }, [startAt, endAt]);
 
   const copyText = () => {
     const code = CoderRef.current.innerText.replace(/\n/g, '\r\n');
@@ -33,11 +53,20 @@ export default function CodeDisplay({ label = "", Code = <></>, hasHead = true, 
             </button>
           </div>
         </div>}
-        {isOpen && <pre>
-          <code ref={CoderRef}>
-            {Code}
-          </code>
-        </pre>}
+        {isOpen && <div className="lines-code">
+          {lines.length > 0 && <div className="lines">
+            {
+              lines.map(line => <div className="line">
+                <span>{line}</span>
+              </div>)
+            }
+          </div>}
+          <pre>
+            <code ref={CoderRef}>
+              {Code}
+            </code>
+          </pre>
+        </div>}
       </Wrapper>
     </div>
   )

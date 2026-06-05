@@ -9,7 +9,7 @@ export default function ServerBasics() {
     <>
       <section className="section hero-section">
         <Wrapper>
-          <p className="heading-high light">Server Code</p>
+          <p className="heading-high light">server.js</p>
         </Wrapper>
       </section>
 
@@ -90,7 +90,7 @@ export default function ServerBasics() {
                 label="JavaScript JSX"
                 Code={
                   <>
-                    <span className="comment">// Importing dependencies (CommonJS)<br /></span>
+                    <span className="comment">// Importing or requiring dependencies<br /></span>
                     <span><span className="midblue">const</span> <span className="lightyellow">express</span> = <span className="lightyellow">require</span><span className="yellow">(</span><span className="orange">"express"</span><span className="yellow">)</span>;<br /></span>
                     <span><span className="midblue">const</span> <span className="lightyellow">cors</span> = <span className="lightyellow">require</span><span className="yellow">(</span><span className="orange">"cors"</span><span className="yellow">)</span>;<br /></span>
                     <span><span className="midblue">const</span> <span className="blue">mysql</span> = <span className="lightyellow">require</span><span className="yellow">(</span><span className="orange">"mysql2/promise"</span><span className="yellow">)</span>;<br /></span>
@@ -98,6 +98,8 @@ export default function ServerBasics() {
                 }
                 icon={<CurlyBraces />}
                 hasMarginBottom={true}
+                startAt={1}
+                endAt={5}
               />,
             ]}
           />

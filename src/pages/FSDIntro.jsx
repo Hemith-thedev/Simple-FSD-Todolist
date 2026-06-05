@@ -6,8 +6,6 @@ import Table from "../components/Table";
 import SubjectPoint from "../components/SubjectPoint";
 
 export default function FSDIntro() {
-
-  const [showWelcomePopup, setShowWelcomePopup] = useState(() => !localStorage.getItem("s-fsd-t-user-name"));
   const [userName, setUserName] = useState(() => {
     const storedName = localStorage.getItem("s-fsd-t-user-name");
     if (storedName) return storedName.split(" ")[0];
@@ -17,12 +15,8 @@ export default function FSDIntro() {
     const storedName = localStorage.getItem("s-fsd-t-user-name");
     if (storedName) {
       setUserName(storedName.split(" ")[0]);
-      setShowWelcomePopup(false);
-      document.body.style.overflow = "auto"
     } else {
       setUserName("");
-      setShowWelcomePopup(true);
-      document.body.style.overflow = "hidden"
     }
   }, 10);
 
@@ -42,11 +36,7 @@ export default function FSDIntro() {
       <section className="section hero-section">
         <Wrapper>
           <div>
-            <p className="heading-high light">Good <GenerateGreetings />, <span className="gradient-bg bg-s-r-l clip-text" title="Double click to edit" onDoubleClick={() => {
-              localStorage.removeItem("s-fsd-t-user-name");
-              setShowWelcomePopup(true);
-              document.body.style.overflow = "hidden"
-            }}>{userName ? userName : "Guest"}</span>!</p>
+            <p className="heading-high light">Good <GenerateGreetings />, <span className="gradient-bg bg-s-r-l clip-text">{userName ? userName : "Guest"}</span>!</p>
           </div>
         </Wrapper>
       </section>
@@ -621,7 +611,6 @@ export default function FSDIntro() {
           />
         </Wrapper>
       </section>
-      <WelcomePopup className={showWelcomePopup ? "" : "hidden"} />
     </>
   )
 }

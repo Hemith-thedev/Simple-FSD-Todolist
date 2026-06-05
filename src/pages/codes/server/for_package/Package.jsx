@@ -9,25 +9,20 @@ export default function ServerPackage() {
     <>
       <section className="section hero-section">
         <Wrapper>
-          <p className="heading-high light">Server Code</p>
+          <p className="heading-high light">package.json</p>
         </Wrapper>
       </section>
 
       <section className="section code-section">
         <Wrapper>
           <UL
-            head={
-              <p className="heading-high bold gradient-bg bg-p-l-r clip-text">
-                package.json
-              </p>
-            }
             contents={[
               <UL
                 contents={[
                   <UL
                     contents={[
                       <UL
-                        head={<p className="body-mid bold">Scripts</p>}
+                        head={<p className="heading-high bold gradient-bg bg-p-l-r clip-text">Scripts</p>}
                         contents={[
                           <UL
                             contents={[
@@ -55,7 +50,7 @@ export default function ServerPackage() {
                         ]}
                       />,
                       <UL
-                        head={<p className="body-mid bold">Dependencies</p>}
+                        head={<p className="heading-high bold gradient-bg bg-p-l-r clip-text">Dependencies</p>}
                         contents={[
                           <UL
                             contents={[
@@ -83,7 +78,7 @@ export default function ServerPackage() {
                         ]}
                       />,
                       <UL
-                        head={<p className="body-mid bold">Core fields</p>}
+                        head={<p className="heading-high bold gradient-bg bg-p-l-r clip-text">Core fields</p>}
                         contents={[
                           <UL
                             contents={[
@@ -119,7 +114,7 @@ export default function ServerPackage() {
                         ]}
                       />,
                       <UL
-                        head={<p className="body-mid bold">How to use</p>}
+                        head={<p className="heading-high bold gradient-bg bg-p-l-r clip-text">How to use</p>}
                         contents={[
                           <UL
                             contents={[
@@ -131,7 +126,7 @@ export default function ServerPackage() {
                         ]}
                       />,
                       <UL
-                        head={<p className="body-mid bold">Best practices</p>}
+                        head={<p className="heading-high bold gradient-bg bg-p-l-r clip-text">Best practices</p>}
                         contents={[
                           <UL
                             contents={[
@@ -143,11 +138,9 @@ export default function ServerPackage() {
                         ]}
                       />,
                     ]}
-                    hasStep
                     hasMarginBottom
                   />
                 ]}
-                hasStep
               />,
               <CodeDisplay
                 label="JSON"

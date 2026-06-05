@@ -9,7 +9,7 @@ export default function ServerMiddleware() {
     <>
       <section className="section hero-section">
         <Wrapper>
-          <p className="heading-high light">Server Code</p>
+          <p className="heading-high light">server.js</p>
         </Wrapper>
       </section>
       <section className="section code-section">
@@ -48,13 +48,18 @@ export default function ServerMiddleware() {
               />,
               <CodeDisplay label="JavaScript JSX" Code={
                 <>
+                  <span><br /></span>
                   <span className="comment">// Middleware and using JSON<br /></span>
                   <span><span className="midblue">const</span> <span className="blue">server</span> = <span className="lightyellow">express</span><span className="yellow">()</span>;<br /></span>
-                  <span><span className="blue">server</span>.<span className="lightyellow">use</span><span className="yellow">(</span><span className="lightyellow">cors</span><span className="purple">()</span><span className="yellow">)</span><br /></span>
-                  <span><span className="blue">server</span>.<span className="lightyellow">use</span><span className="yellow">(</span><span className="lightyellow">express</span>.<span className="lightyellow">json</span><span className="purple">()</span><span className="yellow">)</span><br /></span>
-
+                  <span><span className="blue">server</span>.<span className="lightyellow">use</span><span className="yellow">(</span><span className="lightyellow">cors</span><span className="purple">()</span><span className="yellow">)</span>;<br /></span>
+                  <span><span className="blue">server</span>.<span className="lightyellow">use</span><span className="yellow">(</span><span className="lightyellow">express</span>.<span className="lightyellow">json</span><span className="purple">()</span><span className="yellow">)</span>;<br /></span>
                 </>
-              } icon={<CurlyBraces />} hasMarginBottom={true} />,
+              }
+              icon={<CurlyBraces />}
+              hasMarginBottom={true}
+              startAt={5}
+              endAt={10}
+              />,
             ]}
           />
         </Wrapper>

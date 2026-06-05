@@ -5,11 +5,13 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Pen } from 'lucide-react';
 
 import FSDIntro from './pages/FSDIntro';
 import ToolsRequiredNodeJS from './pages/ToolsRequiredNodeJS';
 import ToolsRequiredXampp from './pages/ToolsRequiredXampp';
+import JavaScriptIntro from './pages/concepts/understanding/languages/JavaScript';
+import TypeScriptIntro from './pages/concepts/understanding/languages/TypeScript';
 import UnderstandingFiles from './pages/UnderstandingFiles';
 import UnderstandingFolders from './pages/UnderstandingFolders';
 import ProjectSetup from './pages/ProjectSetup';
@@ -22,12 +24,12 @@ import ServerRead from "./pages/codes/server/for_server/routes/Read";
 import ServerUpdate from "./pages/codes/server/for_server/routes/Update";
 import ServerDelete from "./pages/codes/server/for_server/routes/Delete";
 import ServerListening from "./pages/codes/server/for_server/Listening";
+import AppImport from './pages/codes/client/app/Imports';
+import AppTodoComponent from './pages/codes/client/app/TodoComponent';
 import PageNotFound from './pages/PageNotFound';
 
 import NavigationBar from './components/NavigationBar';
-
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import WelcomePopup from './components/WelcomePopup';
 
 
 function App() {
@@ -42,7 +44,7 @@ function App() {
     } else {
       setHasGivenName(false);
     }
-  }, 1000)
+  }, 10)
   const toggleMenu = () => setIsOpen(prev => !prev);
   const location = useLocation();
   const GenerateMainClass = () => {
@@ -53,8 +55,38 @@ function App() {
     return ClassName;
   }
   useEffect(() => {
-    MainRef.current.scrollTo(0, 0);
-  }, [window.location.pathname]);
+    if (MainRef.current) MainRef.current.scrollTo(0, 0);;
+  }, [location.pathname]);
+  useEffect(() => {
+    const userTheme = localStorage.getItem("s-fsd-t-user-theme");
+    if (userTheme) {
+      document.documentElement.style.setProperty("--hue-value", userTheme);
+    }
+  }, [location.pathname]);
+
+  const [showPopup, setShowPopup] = useState(() => !localStorage.getItem("s-fsd-t-user-name"));
+  // eslint-disable-next-line
+  const [_, setUserName] = useState(() => {
+    const storedName = localStorage.getItem("s-fsd-t-user-name");
+    if (storedName) return storedName.split(" ")[0];
+  });
+  const submitForm = () => {
+    localStorage.removeItem("s-fsd-t-user-name");
+    setShowPopup(true);
+    document.body.style.overflow = "hidden"
+  }
+  setInterval(() => {
+    const storedName = localStorage.getItem("s-fsd-t-user-name");
+    if (storedName) {
+      setUserName(storedName.split(" ")[0]);
+      setShowPopup(false);
+      document.body.style.overflow = "auto"
+    } else {
+      setUserName("");
+      setShowPopup(true);
+      document.body.style.overflow = "hidden"
+    }
+  }, 10);
   // gsap.registerPlugin(ScrollTrigger);
   // gsap.utils.toArray(document.querySelectorAll("main p")).forEach((el) => {
   //   gsap.fromTo(el, {
@@ -79,10 +111,12 @@ function App() {
       >
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<FSDIntro />} />
-          <Route path="/tools-required/node-js" element={<ToolsRequiredNodeJS />} />
-          <Route path="/tools-required/xampp-control-panel" element={<ToolsRequiredXampp />} />
-          <Route path="/understanding-files" element={<UnderstandingFiles />} />
-          <Route path="/understanding-folders" element={<UnderstandingFolders />} />
+          <Route path="/concepts/required-tools/node-js" element={<ToolsRequiredNodeJS />} />
+          <Route path="/concepts/required-tools/xampp-control-panel" element={<ToolsRequiredXampp />} />
+          <Route path="/concepts/understanding/languages/javascript-jsx" element={<JavaScriptIntro />} />
+          <Route path="/concepts/understanding/languages/typescript" element={<TypeScriptIntro />} />
+          <Route path="/concepts/understanding/files" element={<UnderstandingFiles />} />
+          <Route path="/concepts/understanding/folders" element={<UnderstandingFolders />} />
           <Route path="/project-setup" element={<ProjectSetup />} />
           <Route path="/codes/server-side/package" element={<ServerPackage />} />
           <Route path="/codes/server-side/server/basics" element={<ServerBasics />} />
@@ -93,20 +127,32 @@ function App() {
           <Route path="/codes/server-side/server/routes/update" element={<ServerUpdate />} />
           <Route path="/codes/server-side/server/routes/delete" element={<ServerDelete />} />
           <Route path="/codes/server-side/server/listening" element={<ServerListening />} />
+          <Route path="/codes/client-side/app/imports" element={<AppImport />} />
+          <Route path="/codes/client-side/app/todo-component" element={<AppTodoComponent />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <SpeedInsights />
         <Analytics />
       </main>
-      <div className={`toggle-btn ${isOpen ? "open" : ""} ${!hasGivenName ? "hide" : ""}`}>
-        <button onClick={toggleMenu}>
-          <div className="open">
-            <Menu />
-          </div>
-          <div className="close">
-            <X />
-          </div>
-        </button>
+      <WelcomePopup className={showPopup ? "" : "hidden"} />
+      <div className="option-buttons">
+        <div className={`theme-toggle ${!hasGivenName ? "hide" : ""}`}>
+          <button onClick={submitForm}>
+            <div className="open">
+              <Pen />
+            </div>
+          </button>
+        </div>
+        <div className={`menu-toggle ${isOpen ? "open" : ""} ${!hasGivenName ? "hide" : ""}`}>
+          <button onClick={toggleMenu}>
+            <div className="open">
+              <Menu />
+            </div>
+            <div className="close">
+              <X />
+            </div>
+          </button>
+        </div>
       </div>
     </>
   );

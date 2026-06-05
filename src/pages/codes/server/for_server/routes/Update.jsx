@@ -9,7 +9,7 @@ export default function ServerUpdate() {
     <>
       <section className="section hero-section">
         <Wrapper>
-          <p className="heading-high light">Server Code</p>
+          <p className="heading-high light">server.js</p>
         </Wrapper>
       </section>
 
@@ -105,6 +105,7 @@ export default function ServerUpdate() {
                 label="JavaScript JSX"
                 Code={
                   <>
+                    <span><br /></span>
                     <span className="comment">// Edit todo (U - Update)<br /></span>
                     <span><span className="blue">server</span>.<span className="lightyellow">put</span><span className="yellow">(</span><span className="orange">"/api/update/todo/:id"</span>, <span className="midblue">async</span> <span className="purple">(</span><span className="lightblue">req</span>, <span className="lightblue">res</span><span className="purple">)</span> <span className="midblue">=&gt;</span> <span className="purple">{"{"}</span><br /></span>
                     <span>  <span className="pink">try</span> <span className="blue">{"{"}</span><br /></span>
@@ -114,16 +115,15 @@ export default function ServerUpdate() {
                     <span>      <span className="purple">[</span><span className="lightblue">req</span>.<span className="lightblue">params</span>.<span className="lightblue">id</span><span className="purple">]</span><br /></span>
                     <span>    <span className="yellow">)</span>;<br /></span>
                     <span>    <span className="pink">if</span> <span className="yellow">(</span><span className="blue">isTodoExists</span>.<span className="lightblue">length</span> &gt; <span className="lightgreen">0</span><span className="yellow">)</span> <span className="yellow">{"{"}</span><br /></span>
-                    <span>      <span className="pink">await</span> <span className="blue">database</span>.<span className="lightyellow">query</span><span className="yellow">(</span><br /></span>
+                    <span>      <span className="pink">await</span> <span className="blue">database</span>.<span className="lightyellow">query</span><span className="purple">(</span><br /></span>
                     <span>        <span className="orange">"UPDATE todos SET label = ?, completed = ? WHERE id = ?"</span>,<br /></span>
-                    <span>        <span className="purple">[</span><span className="blue">edited_label</span>, <span className="blue">completed</span>, <span className="lightblue">req</span>.<span className="lightblue">params</span>.<span className="lightblue">id</span><span className="purple">]</span><br /></span>
-                    <span>      <span className="yellow">)</span>;<br /></span>
-                    <span>      <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="yellow">(</span><span className="lightgreen">200</span><span className="yellow">)</span>.<span className="lightyellow">json</span><span className="yellow">(</span><span className="purple">{"{"}</span> <span className="lightblue">message:</span> <span className="orange">"Todo updated successfully! 🥳"</span> <span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
+                    <span>        <span className="blue">[</span><span className="blue">edited_label</span>, <span className="blue">completed</span>, <span className="lightblue">req</span>.<span className="lightblue">params</span>.<span className="lightblue">id</span><span className="blue">]</span><br /></span>
+                    <span>      <span className="purple">)</span>;<br /></span>
                     <span>    <span className="yellow">{"}"}</span> <span className="pink">else</span> <span className="yellow">{"{"}</span><br /></span>
-                    <span>      <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="yellow">(</span><span className="lightgreen">200</span><span className="yellow">)</span>.<span className="lightyellow">json</span><span className="yellow">(</span><span className="purple">{"{"}</span> <span className="lightblue">message:</span> <span className="orange">"This todo is not found! 😕"</span> <span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
+                    <span>      <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="purple">(</span><span className="lightgreen">200</span><span className="purple">)</span>.<span className="lightyellow">json</span><span className="purple">(</span><span className="blue">{"{"}</span> <span className="lightblue">message:</span> <span className="orange">"Todo not found 😿"</span> <span className="blue">{"}"}</span><span className="purple">)</span>;<br /></span>
                     <span>    <span className="yellow">{"}"}</span><br /></span>
                     <span>  <span className="blue">{"}"}</span> <span className="pink">catch</span> <span className="blue">(</span><span className="lightblue">error</span><span className="blue">)</span> <span className="blue">{"{"}</span><br /></span>
-                    <span>    <span className="lightblue">console</span>.<span className="lightyellow">log</span><span className="yellow">(</span><span className="orange">"Failed to update todo:\n"</span> + <span className="lightblue">error</span><span className="yellow">)</span>;<br /></span>
+                    <span>    <span className="lightblue">console</span>.<span className="lightyellow">log</span><span className="yellow">(</span><span className="orange">"Failed to update todo:<span className="lightyellow">\n</span>"</span> + <span className="lightblue">error</span><span className="yellow">)</span>;<br /></span>
                     <span>    <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="yellow">(</span><span className="lightgreen">500</span><span className="yellow">)</span>.<span className="lightyellow">json</span><span className="yellow">(</span><span className="purple">{"{"}</span> <span className="lightblue">message:</span> <span className="orange">"Server error 💀"</span> <span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
                     <span>  <span className="blue">{"}"}</span><br /></span>
                     <span><span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
@@ -131,6 +131,8 @@ export default function ServerUpdate() {
                 }
                 icon={<CurlyBraces />}
                 hasMarginBottom={true}
+                startAt={50}
+                endAt={72}
               />
             ]}
           />

@@ -9,7 +9,7 @@ export default function ServerCreate() {
     <>
       <section className="section hero-section">
         <Wrapper>
-          <p className="heading-high light">Server Code</p>
+          <p className="heading-high light">server.js</p>
         </Wrapper>
       </section>
 
@@ -112,17 +112,18 @@ export default function ServerCreate() {
                 label="JavaScript JSX"
                 Code={
                   <>
+                    <span><br /></span>
                     <span className="comment">// Add todo (C - Create)<br /></span>
                     <span><span className="blue">server</span>.<span className="lightyellow">post</span><span className="yellow">(</span><span className="orange">"/api/create/todo"</span>, <span className="midblue">async</span> <span className="purple">(</span><span className="lightblue">req</span>, <span className="lightblue">res</span><span className="purple">)</span> <span className="midblue">=&gt;</span> <span className="purple">{"{"}</span><br /></span>
                     <span>  <span className="pink">try</span> <span className="blue">{"{"}</span><br /></span>
-                    <span>    <span className="midblue">const</span> <span className="yellow">{"{"}</span> <span className="blue">todo</span>, <span className="blue">completed</span> <span className="yellow">{"}"}</span> = <span className="lightblue">req</span>.<span className="lightblue">body</span>;<br /></span>
+                    <span>    <span className="midblue">const</span> <span className="yellow">{"{"}</span> <span className="blue">todo</span> <span className="yellow">{"}"}</span> = <span className="lightblue">req</span>.<span className="lightblue">body</span>;<br /></span>
                     <span>    <span className="pink">await</span> <span className="blue">database</span>.<span className="lightyellow">query</span><span className="yellow">(</span><br /></span>
                     <span>      <span className="orange">"INSERT INTO todos (label, completed) VALUES (?, ?)"</span>,<br /></span>
-                    <span>      <span className="purple">[</span><span className="blue">todo</span>, <span className="blue">completed</span><span className="purple">]</span><br /></span>
+                    <span>      <span className="purple">[</span><span className="blue">todo</span>, <span className="midblue">false</span><span className="purple">]</span><br /></span>
                     <span>    <span className="yellow">)</span>;<br /></span>
                     <span>    <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="yellow">(</span><span className="lightgreen">200</span><span className="yellow">)</span>.<span className="lightyellow">json</span><span className="yellow">(</span><span className="purple">{"{"}</span> <span className="lightblue">message:</span> <span className="orange">"Todo added successfully! 🥳"</span> <span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
                     <span>  <span className="blue">{"}"}</span> <span className="pink">catch</span> <span className="blue">(</span><span className="lightblue">error</span><span className="blue">)</span> <span className="blue">{"{"}</span><br /></span>
-                    <span>    <span className="lightblue">console</span>.<span className="lightyellow">log</span><span className="yellow">(</span><span className="orange">"Failed to add todo:\n"</span> + <span className="lightblue">error</span><span className="yellow">)</span>;<br /></span>
+                    <span>    <span className="lightblue">console</span>.<span className="lightyellow">log</span><span className="yellow">(</span><span className="orange">"Failed to add todo:<span className="lightyellow">\n</span>"</span> + <span className="lightblue">error</span><span className="yellow">)</span>;<br /></span>
                     <span>    <span className="lightblue">res</span>.<span className="lightyellow">status</span><span className="yellow">(</span><span className="lightgreen">500</span><span className="yellow">)</span>.<span className="lightyellow">json</span><span className="yellow">(</span><span className="purple">{"{"}</span> <span className="lightblue">message:</span> <span className="orange">"Server error 💀"</span> <span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
                     <span>  <span className="blue">{"}"}</span><br /></span>
                     <span><span className="purple">{"}"}</span><span className="yellow">)</span>;<br /></span>
@@ -130,6 +131,8 @@ export default function ServerCreate() {
                 }
                 icon={<CurlyBraces />}
                 hasMarginBottom={true}
+                startAt={18}
+                endAt={33}
               />,
             ]}
           />

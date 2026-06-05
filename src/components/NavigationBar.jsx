@@ -1,45 +1,9 @@
 import Wrapper from "./Wrapper";
 import UL from "./UL";
 import Logo from "./Logo";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { ChevronRight } from "lucide-react";
-
-const NavigationButton = ({ label = "My Dropdown", path = "", isDropdown = false, links = [{ label: "Link", path: "" }], icon = true }) => {
-  const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
-  const active = window.location.pathname === path;
-  return (isDropdown) ? (
-    <div className="navigation-link-dropdown">
-      <button className="toggle" onClick={() => setIsOpen(prev => !prev)}>
-        <div className={`icon ${isOpen ? "is-open" : ""}`}>
-          <ChevronRight />
-        </div>
-        <p className="light">{label}</p>
-      </button>
-      <UL
-        className={`${isOpen ? "open" : ""}`}
-        contents={[
-          links.map(l => {
-            return l
-          })
-        ]}
-        hasStep
-      />
-    </div>
-  ) : (
-    <button onClick={() => navigate(path)} className={`navigation-link ${(active) ? "active" : ""}`}>
-      {icon && <div className={`icon`} style={{ opacity: 0 }}>
-        <ChevronRight />
-      </div>}
-      <p className="light">{label}</p>
-    </button>
-  )
-}
+import NavigationButton from "./NavigationButton";
 
 export default function NavigationBar({ isOpen, isMobile }) {
-  const navigate = useNavigate();
-  const RouteName = window.location.pathname;
   return (
     <div className={`navigation-bar ${isOpen ? "open" : ""} ${isMobile ? "is-mobile" : ""} ${!localStorage.getItem("s-fsd-t-user-name") ? "hide" : ""}`}>
       <Wrapper>
@@ -51,12 +15,16 @@ export default function NavigationBar({ isOpen, isMobile }) {
             <NavigationButton label="Quick Introduction" path="/" />,
             <NavigationButton label="Concepts" isDropdown={true} links={[
               <NavigationButton label="Required Tools" isDropdown={true} links={[
-                <NavigationButton label="Node JS" path="/tools-required/node-js" />,
-                <NavigationButton label="XAMPP Control Panel" path="/tools-required/xampp-control-panel" />
+                <NavigationButton label="Node JS" path="/concepts/required-tools/node-js" />,
+                <NavigationButton label="XAMPP Control Panel" path="/concepts/required-tools/xampp-control-panel" />
               ]} />,
               <NavigationButton label="Understanding" isDropdown={true} links={[
-                <NavigationButton label="Files" path="/understanding-files" />,
-                <NavigationButton label="Folders" path="/understanding-folders" />
+                <NavigationButton label="Languages" isDropdown={true} links={[
+                  <NavigationButton label="JavaScript" path="/concepts/understanding/languages/javascript-jsx" />,
+                  <NavigationButton label="TypeScript" path="/concepts/understanding/languages/typescript" />
+                ]} />,
+                <NavigationButton label="Files" path="/concepts/understanding/files" />,
+                <NavigationButton label="Folders" path="/concepts/understanding/folders" />,
               ]} />,
             ]} />,
             <NavigationButton label="Project Setup" path="/project-setup" />,
@@ -72,8 +40,21 @@ export default function NavigationBar({ isOpen, isMobile }) {
                     <NavigationButton label="read" path="/codes/server-side/server/routes/read" />,
                     <NavigationButton label="update" path="/codes/server-side/server/routes/update" />,
                     <NavigationButton label="delete" path="/codes/server-side/server/routes/delete" />
-                  ]} />
+                  ]} />,
+                  <NavigationButton label="listening" path="/codes/server-side/server/listening" />,
                 ]} />
+              ]} />,
+              <NavigationButton label="Client" isDropdown={true} links={[
+                <NavigationButton label="src" isDropdown={true} links={[
+                  <NavigationButton label="components" isDropdown={true} links={[
+                    <NavigationButton label="TodoForm" path="/codes/client-side/src/components/todo-form-component" />,
+                    <NavigationButton label="Todo" path="/codes/client-side/src/components/todo-component" />
+                  ]} />,
+                  <NavigationButton label="App.js" isDropdown={true} links={[
+                    <NavigationButton label="Imports" path="/codes/client-side/app/imports" />,
+                    <NavigationButton label="Todo Component" path="/codes/client-side/app/todo-component" />
+                  ]} />,
+                ]} />,
               ]} />
             ]} />,
           ]}
